@@ -24,9 +24,7 @@ yargs.command({
         }
     },
     // the actual code that will be executed 
-    handler: function (argv){
-       notes.addNote(argv.title, argv.body)
-    }
+    handler: (argv) => notes.addNote(argv.title, argv.body)  
 })
 
 //create remove command
@@ -40,27 +38,22 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function (argv){
-        notes.removeNote(argv.title)
-    }
+    handler: (argv) => notes.removeNote(argv.title)
+    
 })
 
 //read
 yargs.command({
     command: 'read',
-    command: 'Reading a note',
-    handler: function (){
-        console.log('Reading the note...')
-    }
+    describe: 'Reading a note',
+    handler:  ()  => console.log('Reading the note...')    
 })
 
 //list
 yargs.command({
-    command: 'List',
-    command: 'Listing a note',
-    handler: function (){
-        console.log('Listing the note...')
-    }
+    command: 'list',
+    describe: 'Listing a note',
+    handler: () => notes.listNotes()
 })
 
 //parsing argument with config details 
